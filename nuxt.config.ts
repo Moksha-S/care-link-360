@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: "2025-05-15",
   devtools: { enabled: true },
-  modules: ["@nuxt/eslint", "vuetify-nuxt-module"],
+  modules: ["@nuxt/eslint", "vuetify-nuxt-module", "@pinia/nuxt"],
   vuetify: {
     // Vuetify configuration
     theme: {

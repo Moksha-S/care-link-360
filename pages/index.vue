@@ -17,7 +17,9 @@
           <v-divider class="my-4"></v-divider>
           <v-row justify="center" class="mt-4">
             <v-col cols="12" md="6" class="text-center">
-              <v-btn color="primary" size="large" block>Get Started</v-btn>
+              <AtomsButton variant="outlined" size="large" block>
+                Get Started
+              </AtomsButton>
             </v-col>
           </v-row>
         </v-card-text>

@@ -16,12 +16,12 @@
           <option value="user">User</option>
         </select>
         <label class="status-filter">
-          <input type="checkbox" v-model="showOnlyActive">
+          <input v-model="showOnlyActive" type="checkbox">
           Show only active users
         </label>
       </div>
       
-      <button @click="showAddUserForm = true" class="add-button">Add New User</button>
+      <button class="add-button" @click="showAddUserForm = true">Add New User</button>
     </div>
     
     <!-- Add User Form -->
@@ -46,13 +46,13 @@
         </div>
         <div class="form-group">
           <label>
-            <input type="checkbox" v-model="newUser.active">
+            <input v-model="newUser.active" type="checkbox">
             Active
           </label>
         </div>
         <div class="form-actions">
           <button type="submit" class="submit-button">Add User</button>
-          <button type="button" @click="showAddUserForm = false" class="cancel-button">Cancel</button>
+          <button type="button" class="cancel-button" @click="showAddUserForm = false">Cancel</button>
         </div>
       </form>
     </div>
@@ -77,10 +77,10 @@
           </div>
         </div>
         <div class="user-actions">
-          <button @click="toggleUserStatus(user.id)" class="toggle-button">
+          <button class="toggle-button" @click="toggleUserStatus(user.id)">
             {{ user.active ? "Deactivate" : "Activate" }}
           </button>
-          <button @click="deleteUserById(user.id)" class="delete-button">
+          <button class="delete-button" @click="deleteUserById(user.id)">
             Delete
           </button>
         </div>
@@ -107,7 +107,7 @@ const newUser = ref({
   name: '',
   email: '',
   role: 'user',
-  active: true
+  active: true,
 });
 
 // Computed property for filtered users
@@ -147,7 +147,7 @@ const addNewUser = () => {
     name: newUser.value.name,
     email: newUser.value.email,
     role: newUser.value.role,
-    active: newUser.value.active
+    active: newUser.value.active,
   });
   
   // Reset form
@@ -155,7 +155,7 @@ const addNewUser = () => {
     name: '',
     email: '',
     role: 'user',
-    active: true
+    active: true,
   };
   
   showAddUserForm.value = false;

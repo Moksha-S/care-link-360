@@ -23,7 +23,7 @@ defineProps({
     default: "text",
     validator: (value) =>
       ["text", "outlined", "elevated", "plain", "tonal", "flat"].includes(
-        value
+        value,
       ),
   },
   color: {

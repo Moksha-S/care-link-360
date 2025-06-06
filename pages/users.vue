@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1>Users Management</h1>
-    <UsersList />
+    <h1>Users Management---</h1>
+    <TemplatesUsersList />
   </div>
 </template>
 

@@ -1,3 +1,9 @@
+<script setup>
+import { useCounterStore } from "@/stores/counter";
+
+const counter = useCounterStore();
+</script>
+
 <template>
   <v-row justify="center" align="center">
     <v-col cols="12" sm="8" md="6">
@@ -24,6 +30,11 @@
           </v-row>
         </v-card-text>
       </v-card>
+      <div class="p-4">
+        <p class="text-xl font-bold">Count: {{ counter.count }}</p>
+        <AtomsButton @click="counter.increment">+</AtomsButton>
+        <AtomsButton @click="counter.decrement">-</AtomsButton>
+      </div>
     </v-col>
   </v-row>
 </template>

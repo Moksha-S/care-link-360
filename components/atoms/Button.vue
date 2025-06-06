@@ -20,15 +20,12 @@
 defineProps({
   variant: {
     type: String,
-    default: "text",
-    validator: (value) =>
-      ["text", "outlined", "elevated", "plain", "tonal", "flat"].includes(
-        value,
-      ),
+    default: 'text',
+    validator: value => ['text', 'outlined', 'elevated', 'plain', 'tonal', 'flat'].includes(value),
   },
   color: {
     type: String,
-    default: "primary",
+    default: 'primary',
   },
   to: {
     type: [String, Object],
@@ -36,9 +33,8 @@ defineProps({
   },
   size: {
     type: String,
-    default: "default",
-    validator: (value) =>
-      ["small", "default", "large", "x-large"].includes(value),
+    default: 'default',
+    validator: value => ['small', 'default', 'large', 'x-large'].includes(value),
   },
   disabled: {
     type: Boolean,
@@ -66,7 +62,7 @@ defineProps({
   },
 });
 
-defineEmits(["click"]);
+defineEmits(['click']);
 </script>
 
 <style scoped>

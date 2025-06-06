@@ -54,17 +54,14 @@ export const useUserStore = defineStore('user', () => {
 
   // Getters
   const activeUsers = computed(() => users.value.filter(user => user.active));
-  const userById = computed(
-    () => (id: number) => users.value.find(user => user.id === id),
-  );
+  const userById = computed(() => (id: number) => users.value.find(user => user.id === id));
   const usersByRole = computed(
     () => (role: string) => users.value.filter(user => user.role === role),
   );
 
   // Actions
   const addUser = (user: Omit<User, 'id'>) => {
-    const newId =
-      users.value.length > 0 ? Math.max(...users.value.map(u => u.id)) + 1 : 1;
+    const newId = users.value.length > 0 ? Math.max(...users.value.map(u => u.id)) + 1 : 1;
 
     users.value.push({
       id: newId,

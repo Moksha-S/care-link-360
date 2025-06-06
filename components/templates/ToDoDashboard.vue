@@ -27,11 +27,7 @@
     <div class="recent-patients">
       <h2>Recent Patients</h2>
       <div class="patient-list">
-        <div
-          v-for="patient in recentPatients"
-          :key="patient.id"
-          class="patient-item"
-        >
+        <div v-for="patient in recentPatients" :key="patient.id" class="patient-item">
           <div class="patient-avatar">{{ getInitials(patient.name) }}</div>
           <div class="patient-details">
             <h4>{{ patient.name }}</h4>
@@ -45,8 +41,8 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
-import { getSamplePatientData } from "~/utils/sampleData";
+import { ref, onMounted } from 'vue';
+import { getSamplePatientData } from '~/utils/sampleData';
 
 const patientStats = ref({
   totalPatients: 0,
@@ -63,11 +59,11 @@ onMounted(() => {
   recentPatients.value = data.recentPatients;
 });
 
-const getInitials = (name) => {
+const getInitials = name => {
   return name
-    .split(" ")
-    .map((part) => part.charAt(0))
-    .join("");
+    .split(' ')
+    .map(part => part.charAt(0))
+    .join('');
 };
 </script>
 

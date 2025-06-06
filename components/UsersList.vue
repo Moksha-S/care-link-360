@@ -1,14 +1,10 @@
 <template>
   <div class="users-list">
     <h2>Users List</h2>
-    
+
     <div class="controls">
       <div class="filters">
-        <input 
-          v-model="searchTerm" 
-          placeholder="Search by name or email" 
-          class="search-input"
-        />
+        <input v-model="searchTerm" placeholder="Search by name or email" class="search-input" />
         <select v-model="roleFilter" class="role-filter">
           <option value="">All Roles</option>
           <option value="admin">Admin</option>
@@ -16,14 +12,14 @@
           <option value="user">User</option>
         </select>
         <label class="status-filter">
-          <input v-model="showOnlyActive" type="checkbox">
+          <input v-model="showOnlyActive" type="checkbox" />
           Show only active users
         </label>
       </div>
-      
+
       <button class="add-button" @click="showAddUserForm = true">Add New User</button>
     </div>
-    
+
     <!-- Add User Form -->
     <div v-if="showAddUserForm" class="user-form">
       <h3>Add New User</h3>
@@ -46,13 +42,15 @@
         </div>
         <div class="form-group">
           <label>
-            <input v-model="newUser.active" type="checkbox">
+            <input v-model="newUser.active" type="checkbox" />
             Active
           </label>
         </div>
         <div class="form-actions">
           <button type="submit" class="submit-button">Add User</button>
-          <button type="button" class="cancel-button" @click="showAddUserForm = false">Cancel</button>
+          <button type="button" class="cancel-button" @click="showAddUserForm = false">
+            Cancel
+          </button>
         </div>
       </form>
     </div>
@@ -60,7 +58,7 @@
     <div v-if="filteredUsers.length === 0" class="no-users">
       No users available matching your criteria
     </div>
-    
+
     <ul v-else class="users">
       <li v-for="user in filteredUsers" :key="user.id" class="user-item">
         <div class="user-info">
@@ -68,21 +66,16 @@
           <p>{{ user.email }}</p>
           <div class="user-details">
             <span class="role">Role: {{ user.role }}</span>
-            <span
-              class="status"
-              :class="{ active: user.active, inactive: !user.active }"
-            >
-              Status: {{ user.active ? "Active" : "Inactive" }}
+            <span class="status" :class="{ active: user.active, inactive: !user.active }">
+              Status: {{ user.active ? 'Active' : 'Inactive' }}
             </span>
           </div>
         </div>
         <div class="user-actions">
           <button class="toggle-button" @click="toggleUserStatus(user.id)">
-            {{ user.active ? "Deactivate" : "Activate" }}
+            {{ user.active ? 'Deactivate' : 'Activate' }}
           </button>
-          <button class="delete-button" @click="deleteUserById(user.id)">
-            Delete
-          </button>
+          <button class="delete-button" @click="deleteUserById(user.id)">Delete</button>
         </div>
       </li>
     </ul>
@@ -90,8 +83,8 @@
 </template>
 
 <script setup lang="ts">
-import { useUserStore } from "~/stores/user";
-import { ref, computed } from "vue";
+import { useUserStore } from '~/stores/user';
+import { ref, computed } from 'vue';
 
 // Get the user store
 const userStore = useUserStore();
@@ -114,16 +107,17 @@ const newUser = ref({
 const filteredUsers = computed(() => {
   return userStore.users.filter(user => {
     // Apply search filter
-    const matchesSearch = searchTerm.value === '' || 
+    const matchesSearch =
+      searchTerm.value === '' ||
       user.name.toLowerCase().includes(searchTerm.value.toLowerCase()) ||
       user.email.toLowerCase().includes(searchTerm.value.toLowerCase());
-    
+
     // Apply role filter
     const matchesRole = roleFilter.value === '' || user.role === roleFilter.value;
-    
+
     // Apply active filter
     const matchesActive = !showOnlyActive.value || user.active;
-    
+
     return matchesSearch && matchesRole && matchesActive;
   });
 });
@@ -149,7 +143,7 @@ const addNewUser = () => {
     role: newUser.value.role,
     active: newUser.value.active,
   });
-  
+
   // Reset form
   newUser.value = {
     name: '',
@@ -157,7 +151,7 @@ const addNewUser = () => {
     role: 'user',
     active: true,
   };
-  
+
   showAddUserForm.value = false;
 };
 </script>
@@ -233,7 +227,8 @@ const addNewUser = () => {
   flex-wrap: wrap;
 }
 
-.search-input, .role-filter {
+.search-input,
+.role-filter {
   padding: 8px;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -246,7 +241,7 @@ const addNewUser = () => {
 }
 
 .add-button {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   border: none;
   padding: 8px 15px;
@@ -271,7 +266,8 @@ const addNewUser = () => {
   margin-bottom: 5px;
 }
 
-.form-group input, .form-group select {
+.form-group input,
+.form-group select {
   width: 100%;
   padding: 8px;
   border: 1px solid #ddd;
@@ -285,7 +281,7 @@ const addNewUser = () => {
 }
 
 .submit-button {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   border: none;
   padding: 8px 15px;
@@ -309,7 +305,7 @@ const addNewUser = () => {
 }
 
 .toggle-button {
-  background-color: #2196F3;
+  background-color: #2196f3;
   color: white;
   border: none;
   padding: 5px 10px;

@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import { getCurrentYear } from "~/utils/date";
+import { getCurrentYear } from '~/utils/date';
 
 const currentYear = getCurrentYear();
 </script>
